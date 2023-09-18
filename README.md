@@ -16,3 +16,20 @@ you can fix things by running ```git submodule update --init``` (This is only ne
 # As a template
 You should replace this with your _own_ README if you are using this
 as a template.
+
+
+# prerequisites
+Openocd
+gdb-multiarch
+binutils-arm-none-eabi // confirm
+
+# flashing commands
+Work in progres:
+for some reason flashing in this repository lefts uc in a reset state:
+    "Can not connect to target. Please use 'connect under reset"
+Workaround is to push reset button and use "make flash" after that, ecu can be reflashed via stflash or make flash.
+TODO: figure out what is misconfigured in openocd settings or ld layout...
+
+    make flash    
+    st-flash write awesomesauce.bin 0x8000000
+    st-flash write bin/stm32/nucleo-f446re.bin 0x8000000
